@@ -1,0 +1,21 @@
+.cart {
+    background-color: rgba(97, 29, 11, 0.842);
+    padding: .3em .5em;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 50px;
+    font-size: .7em;
+    font-weight: bold;
+}
+
+.cart .total-item {
+    display: inline-block;
+    font-size: 1em;
+    padding: .3em .9em;
+    border-radius: 30px;
+    background-color: rgba(170, 42, 10, 0.842);
+}

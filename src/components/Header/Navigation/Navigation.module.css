@@ -1,0 +1,23 @@
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(170, 42, 10, 0.842);
+    padding: 1em;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    color: white;
+}
+
+.logo {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
