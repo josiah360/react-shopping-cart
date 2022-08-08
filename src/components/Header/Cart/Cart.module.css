@@ -13,10 +13,19 @@
     cursor: pointer;
 }
 
+.cart.bounce {
+    animation: bounce .3s forwards;
+}
+
 .cart .total-item {
     display: inline-block;
     font-size: 1em;
     padding: .3em .9em;
     border-radius: 30px;
     background-color: rgba(170, 42, 10, 0.842);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% {transform: scale(1.1);}
 }

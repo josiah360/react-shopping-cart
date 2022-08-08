@@ -9,7 +9,7 @@ const Cart = (props) => {
     }, 0)
 
     return (
-        <li className={classes.cart}>Your Cart<span className={classes['total-item']}>{totalItems}</span></li>
+        <li className={`${classes.cart}`}>Your Cart<span className={classes['total-item']}>{totalItems}</span></li>
     )
 }
 
