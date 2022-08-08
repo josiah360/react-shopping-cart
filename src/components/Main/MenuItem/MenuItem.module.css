@@ -1,0 +1,68 @@
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0 ;
+    
+}
+
+.menu-item:not(:last-of-type) {
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.menu-info h2 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.menu-info p {
+    font-size: .8em;
+    font-style: italic;
+    margin: .5em 0;
+}
+
+.menu-info span {
+    font-weight: bold;
+    color: rgba(170, 42, 10, 0.842);
+}
+
+.add-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.add-menu label{
+    display: block;
+    font-size: .8em;
+    font-weight: bold;
+}
+
+.add-menu label input {
+    width: 40px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+.add-menu button {
+    align-self: flex-end;
+    padding: .5em 1em;
+    width: 80px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgba(94, 23, 6, 0.842);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-menu label input:focus,
+.add-menu button:focus {
+    outline: none;
+}
+
+.add-menu button:active {
+    transform: scale(0.98)
+}

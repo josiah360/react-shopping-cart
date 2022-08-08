@@ -1,0 +1,30 @@
+.hero-img {
+    margin: 0;
+    padding: 1em;
+    height: 200px;
+    background: url(../../../assets/header-image.jpg) no-repeat center/cover;
+    display: flex;
+    justify-content: center;
+}
+
+.desc {
+    width: 50%;
+    background-color: #333;
+    border-radius: 10px;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    margin-top: 6em;
+    height: 180px;
+}
+
+.desc h1 {
+    font-size: 1.4em;
+    margin-top: 0;
+}
+
+.desc p {
+    font-size: .9em;
+    line-height: 1.5;
+}
