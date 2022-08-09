@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import CartItem from './CartItem';
 import ConfirmOrder from './confirmOrder';
 import classes from './CartList.module.css'
 
-const CartList = (props) => {
+const CartModal = (props) => {
 
     const cartContent = props.cart.length
 
@@ -28,6 +29,21 @@ const CartList = (props) => {
                 <ConfirmOrder cart={props.cart} closeCart={props.closeCart} />
             </ul>
         </div>
+    )
+}
+
+const CartList = (props) => {
+
+    return (
+        <React.Fragment>
+            {ReactDOM.createPortal(<CartModal 
+                cart={props.cart}
+                increment={props.increment}
+                decrement={props.decrement}
+                closeCart={props.closeCart}
+            />, 
+            document.getElementById('modal'))}
+        </React.Fragment>
     )
 }
 

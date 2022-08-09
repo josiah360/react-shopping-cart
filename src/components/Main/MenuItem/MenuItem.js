@@ -1,26 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
 import classes from './MenuItem.module.css'
 
 const MenuItem = (props) => {
 
-    const [itemInput, setItemInput] = useState('1')
-
-    const inputChangeHandler = (e) => {
-        setItemInput(e.target.value)
-    }
+    const inputRef = useRef()
 
     const submitHandler = (e) => {
         e.preventDefault()
+
+        const inputValue = +inputRef.current.value
 
         const newMeal = {
             mealId: props.id,
             mealTitle: props.title,
             mealPrice: props.price,
-            amount: +itemInput,
+            amount: inputValue,
         }
 
-        props.addMeal(newMeal, +itemInput)
+        props.addMeal(newMeal, inputValue)
     }
 
     return (
@@ -31,7 +29,15 @@ const MenuItem = (props) => {
                 <span>${props.price}</span>
             </div>
             <form className={classes['add-menu']} onSubmit={submitHandler} >
-                <label>Amount <input type='number' value={itemInput} onChange={inputChangeHandler} /></label>
+                <label>
+                    Amount 
+                    <input 
+                        type='number'  
+                        ref={inputRef}
+                        defaultValue='1'
+                        min='1'
+                    />
+                </label>
                 <button type='submit'>+Add</button>
             </form>
         </li>
