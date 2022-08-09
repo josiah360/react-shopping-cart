@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import CartContext from "../../../context/context";
 
 import classes from './confirmOrder.module.css';
 
 const ConfirmOrder = (props) => {
 
-    const totalAmount = props.cart.reduce((total, item) => {
+    const ctx = useContext(CartContext)
+    const { cart } = ctx
+
+    const totalAmount = cart.reduce((total, item) => {
         return total + (item.mealPrice * item.amount)
     }, 0)
 

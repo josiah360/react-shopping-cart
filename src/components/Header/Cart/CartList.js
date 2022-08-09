@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
+import CartContext from '../../../context/context';
 
 import CartItem from './CartItem';
 import ConfirmOrder from './confirmOrder';
@@ -7,26 +8,24 @@ import classes from './CartList.module.css'
 
 const CartModal = (props) => {
 
-    const cartContent = props.cart.length
+    const ctx = useContext(CartContext)
+    const { cart } = ctx
+    const cartContent = cart.length
+    
 
     return (
         <div className={classes.bg}>
             <ul className={classes['cart-list']}>
                 {cartContent === 0 && <h1>No Items in Cart</h1>}
-                {cartContent > 0 && props.cart.map((item, index) => 
+                {cartContent > 0 && cart.map((item, index) => 
                     <CartItem 
                         key={item.mealId}
                         index={index}
                         mealId={item.mealId}
-                        mealTitle={item.mealTitle}
-                        mealPrice={item.mealPrice}
-                        amount={item.amount}
-                        increment={props.increment}
-                        decrement={props.decrement}
                     />
                 )}
 
-                <ConfirmOrder cart={props.cart} closeCart={props.closeCart} />
+                <ConfirmOrder closeCart={props.closeCart} />
             </ul>
         </div>
     )

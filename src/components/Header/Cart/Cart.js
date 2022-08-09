@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CartContext from "../../../context/context";
 
 import CartList from "./CartList";
 import classes from './Cart.module.css'
@@ -6,9 +7,9 @@ import classes from './Cart.module.css'
 const Cart = (props) => {
 
     const [showCart, setShowCart] = useState(false)
+    const ctx = useContext(CartContext)
 
-
-    const totalItems = props.cart.reduce((total, meal) => {
+    const totalItems = ctx.cart.reduce((total, meal) => {
         return total + meal.amount
     }, 0)
 
@@ -23,7 +24,8 @@ const Cart = (props) => {
     return (
         <React.Fragment>
             {showCart && 
-                <CartList cart={props.cart} 
+                <CartList 
+                    cart={props.cart} 
                     closeCart={closeCartHandler} 
                     increment={props.increment} 
                     decrement={props.decrement}

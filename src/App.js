@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import CartContext from './context/context';
 
 import Header from './components/Header/Header';
 import Main from './components/Main';
@@ -78,14 +79,19 @@ function App() {
   }
 
   return (
-    <Fragment>
+    <CartContext.Provider value={{
+      cart: cart,
+      addMeal: AddtoCart,
+      increment: incrementCartItem,
+      decrement: decrementCartItem
+    }}>
       <Header 
         cart={cart} 
         increment={incrementCartItem} 
         decrement={decrementCartItem} 
       />
       <Main menu={menu} addMeal={AddtoCart} />
-    </Fragment>
+    </CartContext.Provider>
   );
 }
 
