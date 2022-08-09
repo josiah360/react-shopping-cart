@@ -1,0 +1,52 @@
+.total {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.label {
+    margin: 0;
+    font-size: 1em;
+}
+
+.total-price {
+    font-weight: bold;
+}
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 8px;
+}
+
+.btns > button {
+    padding: .5em 1em;
+    width: 80px;
+    border-radius: 50px;
+    border: none;
+    background-color: rgba(94, 23, 6, 0.842);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.btns > button:first-of-type {
+    background-color: transparent;
+    color: rgba(94, 23, 6, 0.842);
+    border: 1px solid rgba(94, 23, 6, 0.842);
+}
+
+.btns > button:first-of-type:hover {
+    background-color: rgba(94, 23, 6, 0.842);
+    color: white;
+}
+
+.btns > button:last-of-type:hover {
+    background-color: rgba(44, 8, 0, 0.842);
+}
+
+.btns > button:focus {
+    outline: none;
+}
