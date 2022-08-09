@@ -5,7 +5,7 @@ import Hero from "./Hero/Hero";
 const Header = (props) => {
     return (
         <header>
-            <Navigation cart={props.cart} />
+            <Navigation cart={props.cart} increment={props.increment} />
             <Hero />
         </header>
     )

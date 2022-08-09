@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CartList from "./CartList";
 import classes from './Cart.module.css'
 
 const Cart = (props) => {
 
+    const [showCart, setShowCart] = useState(false)
+
+
     const totalItems = props.cart.reduce((total, meal) => {
         return total + meal.amount
     }, 0)
 
+    const openCartHandler = () => {
+        setShowCart(true)
+    }
+
+    const closeCartHandler = () => {
+        setShowCart(false)
+    }
+
     return (
         <React.Fragment>
-            <CartList />
-            <li className={`${classes.cart}`}>Your Cart<span className={classes['total-item']}>{totalItems}</span></li>
+            {showCart && <CartList cart={props.cart} closeCart={closeCartHandler} increment={props.increment} />}
+            <li className={`${classes.cart}`} onClick={openCartHandler}>
+                Your Cart
+                <span className={classes['total-item']}>{totalItems}</span>
+            </li>
         </React.Fragment>
     )
 }

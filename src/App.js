@@ -52,11 +52,32 @@ function App() {
     })
   }
 
+  const incrementCartItem = (id) => {
+    setCart(prevCart => {
+      const cartItem = prevCart.find(item => item.mealId === id)
+      cartItem.amount += 1
+      return [...prevCart]
+    })
+  }
+
+  const decrementCartItem = (id) => {
+    setCart(prevCart => {
+      
+      if(prevCart.amount < 1) {
+        const cartItem = prevCart.filter(item => item.mealId !== id)
+        prevCart = cartItem
+        return [...prevCart]
+      }
+
+      
+       
+    })
+  }
+
   return (
     <Fragment>
-      <Header cart={cart} />
+      <Header cart={cart} increment={incrementCartItem} />
       <Main menu={menu} addMeal={AddtoCart} />
-      {console.log(cart)}
     </Fragment>
   );
 }
