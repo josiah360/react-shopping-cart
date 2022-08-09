@@ -85,11 +85,7 @@ function App() {
       increment: incrementCartItem,
       decrement: decrementCartItem
     }}>
-      <Header 
-        cart={cart} 
-        increment={incrementCartItem} 
-        decrement={decrementCartItem} 
-      />
+      <Header />
       <Main menu={menu} addMeal={AddtoCart} />
     </CartContext.Provider>
   );

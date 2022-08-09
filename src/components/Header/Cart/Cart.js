@@ -4,7 +4,7 @@ import CartContext from "../../../context/context";
 import CartList from "./CartList";
 import classes from './Cart.module.css'
 
-const Cart = (props) => {
+const Cart = () => {
 
     const [showCart, setShowCart] = useState(false)
     const ctx = useContext(CartContext)
@@ -23,13 +23,7 @@ const Cart = (props) => {
 
     return (
         <React.Fragment>
-            {showCart && 
-                <CartList 
-                    cart={props.cart} 
-                    closeCart={closeCartHandler} 
-                    increment={props.increment} 
-                    decrement={props.decrement}
-            />}
+            {showCart && <CartList closeCart={closeCartHandler} />}
             <li className={`${classes.cart}`} onClick={openCartHandler}>
                 Your Cart
                 <span className={classes['total-item']}>{totalItems}</span>

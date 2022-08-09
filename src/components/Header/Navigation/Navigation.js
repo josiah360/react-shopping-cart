@@ -3,17 +3,13 @@ import React from "react";
 import Cart from "../Cart/Cart";
 import classes from './Navigation.module.css'
 
-const Navigation = (props) => {
+const Navigation = () => {
 
     return (
         <nav className={classes.nav}>
             <ul className={classes.ul}>
                 <li className={classes.logo}>ReactMeals</li>
-                <Cart 
-                    cart={props.cart} 
-                    increment={props.increment} 
-                    decrement={props.decrement}
-                />
+                <Cart />
             </ul>
         </nav>
     )

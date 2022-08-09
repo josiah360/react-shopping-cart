@@ -14,7 +14,7 @@ const CartModal = (props) => {
     
 
     return (
-        <div className={classes.bg}>
+        <div className={classes.bg} onClick={props.closeCart}>
             <ul className={classes['cart-list']}>
                 {cartContent === 0 && <h1>No Items in Cart</h1>}
                 {cartContent > 0 && cart.map((item, index) => 

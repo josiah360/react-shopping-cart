@@ -2,14 +2,10 @@ import React from "react";
 import Navigation from "./Navigation/Navigation";
 import Hero from "./Hero/Hero";
 
-const Header = (props) => {
+const Header = () => {
     return (
         <header>
-            <Navigation 
-                cart={props.cart} 
-                increment={props.increment} 
-                decrement={props.decrement}
-            />
+            <Navigation />
             <Hero />
         </header>
     )
