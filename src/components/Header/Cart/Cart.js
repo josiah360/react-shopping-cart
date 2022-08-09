@@ -22,7 +22,12 @@ const Cart = (props) => {
 
     return (
         <React.Fragment>
-            {showCart && <CartList cart={props.cart} closeCart={closeCartHandler} increment={props.increment} />}
+            {showCart && 
+                <CartList cart={props.cart} 
+                    closeCart={closeCartHandler} 
+                    increment={props.increment} 
+                    decrement={props.decrement}
+            />}
             <li className={`${classes.cart}`} onClick={openCartHandler}>
                 Your Cart
                 <span className={classes['total-item']}>{totalItems}</span>

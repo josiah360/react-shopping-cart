@@ -13,7 +13,7 @@ const CartItem = (props) => {
                 </div>
             </div>
             <div className={classes.buttons}>
-                <button type='button' className={classes['decrement-button']}>-</button>
+                <button type='button' className={classes['decrement-button']} onClick={() => props.decrement(props.mealId)}>-</button>
                 <button type='button' className={classes['increment-button']} onClick={() => props.increment(props.mealId)}>+</button>
             </div>
         </li>

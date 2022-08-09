@@ -19,8 +19,9 @@ const CartList = (props) => {
                         mealId={item.mealId}
                         mealTitle={item.mealTitle}
                         mealPrice={item.mealPrice}
-                        amount={item.amount}
+                        amount={item.amount}s
                         increment={props.increment}
+                        decrement={props.decrement}
                     />
                 )}
 

@@ -9,7 +9,11 @@ const Navigation = (props) => {
         <nav className={classes.nav}>
             <ul className={classes.ul}>
                 <li className={classes.logo}>ReactMeals</li>
-                <Cart cart={props.cart} increment={props.increment} />
+                <Cart 
+                    cart={props.cart} 
+                    increment={props.increment} 
+                    decrement={props.decrement}
+                />
             </ul>
         </nav>
     )

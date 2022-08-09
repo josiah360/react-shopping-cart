@@ -62,21 +62,28 @@ function App() {
 
   const decrementCartItem = (id) => {
     setCart(prevCart => {
+
+      const cartItem = prevCart.find(item => item.mealId === id)
       
-      if(prevCart.amount < 1) {
-        const cartItem = prevCart.filter(item => item.mealId !== id)
-        prevCart = cartItem
+      if(cartItem.amount <= 1) {
+        const newCart = prevCart.filter(item => item.mealId !== id)
+        prevCart = newCart
         return [...prevCart]
       }
 
-      
+      cartItem.amount -= 1
+      return [...prevCart]
        
     })
   }
 
   return (
     <Fragment>
-      <Header cart={cart} increment={incrementCartItem} />
+      <Header 
+        cart={cart} 
+        increment={incrementCartItem} 
+        decrement={decrementCartItem} 
+      />
       <Main menu={menu} addMeal={AddtoCart} />
     </Fragment>
   );

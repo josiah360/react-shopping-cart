@@ -5,7 +5,11 @@ import Hero from "./Hero/Hero";
 const Header = (props) => {
     return (
         <header>
-            <Navigation cart={props.cart} increment={props.increment} />
+            <Navigation 
+                cart={props.cart} 
+                increment={props.increment} 
+                decrement={props.decrement}
+            />
             <Hero />
         </header>
     )
