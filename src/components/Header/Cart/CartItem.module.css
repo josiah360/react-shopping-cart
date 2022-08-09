@@ -5,9 +5,6 @@
     color: black;
     width: 100%;
     padding: 1em 0;
-}
-
-.cart-item:not(:last-of-type) {
     border-bottom: 1px solid rgb(204, 204, 204);
 }
 
@@ -48,3 +45,26 @@
     display: flex;
     column-gap: 5px;
 }
+
+.decrement-button,
+.increment-button {
+    width: 30px;
+    border: 1px solid rgb(187, 187, 187);
+    color: rgba(170, 42, 10, 0.842);
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.decrement-button:hover,
+.increment-button:hover {
+    background-color: rgba(170, 42, 10, 0.842);
+    border-color: rgba(170, 42, 10, 0.842);
+    color: white;
+}
+
+.decrement-button:focus,
+.increment-button:focus {
+    outline: none;
+}
+
