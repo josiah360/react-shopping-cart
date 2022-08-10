@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import CartContext from "../../../context/context";
 
 import MenuItem from "./MenuItem";
 import classes from './Menu.module.css'
 
-const Menu = (props) => {
+const Menu = () => {
+
+    const ctx = useContext(CartContext)
+    const { menu } = ctx
+
     return (
         <ul className={classes.menu}>
-            {props.menu.map((item, idx) =>
+            {menu.map((item, idx) =>
                 <MenuItem 
                     key={item.id}
                     id={item.id}
                     index={idx}
-                    title={item.title}
-                    desc={item.desc}
-                    price={item.price}
-                    addMeal={props.addMeal}
                 />
             )}
         </ul>

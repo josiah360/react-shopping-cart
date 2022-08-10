@@ -1,8 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+import CartContext from "../../../context/context";
 
 import classes from './MenuItem.module.css'
 
 const MenuItem = (props) => {
+
+    const ctx = useContext(CartContext)
+    const {addMeal, menu} = ctx
+
 
     const inputRef = useRef()
 
@@ -13,20 +18,20 @@ const MenuItem = (props) => {
 
         const newMeal = {
             mealId: props.id,
-            mealTitle: props.title,
-            mealPrice: props.price,
+            mealTitle: menu[props.index].title,
+            mealPrice: menu[props.index].price,
             amount: inputValue,
         }
 
-        props.addMeal(newMeal, inputValue)
+        addMeal(newMeal, inputValue)
     }
 
     return (
         <li className={classes['menu-item']}>
             <div className={classes['menu-info']}>
-                <h2>{props.title}</h2>
-                <p>{props.desc}</p>
-                <span>${props.price}</span>
+                <h2>{menu[props.index].title}</h2>
+                <p>{menu[props.index].desc}</p>
+                <span>${menu[props.index].price}</span>
             </div>
             <form className={classes['add-menu']} onSubmit={submitHandler} >
                 <label>
