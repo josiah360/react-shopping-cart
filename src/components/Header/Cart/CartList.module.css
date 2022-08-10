@@ -5,10 +5,8 @@
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
+    z-index: 3;
 }
 
 .cart-list {
@@ -18,8 +16,11 @@
     list-style-type: none;
     border-radius: 5px;
     cursor: default;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -80%);
     z-index: 5;
-    transform: translateY(-100px);
 }
 
 .cart-list > h1 {
