@@ -6,12 +6,14 @@ import classes from './Cart.module.css'
 
 const Cart = () => {
 
-    const [showCart, setShowCart] = useState(false)
     const ctx = useContext(CartContext)
 
     const totalItems = ctx.cart.reduce((total, meal) => {
         return total + meal.amount
     }, 0)
+
+
+    const [showCart, setShowCart] = useState(false)
 
     const openCartHandler = () => {
         setShowCart(true)
