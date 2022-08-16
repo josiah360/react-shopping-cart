@@ -1,6 +1,7 @@
 import React, { useRef, useContext } from "react";
 import CartContext from "../../../context/context";
 
+import Input from "../../../UI/Input";
 import classes from './MenuItem.module.css'
 
 const MenuItem = (props) => {
@@ -33,18 +34,19 @@ const MenuItem = (props) => {
                 <p>{menu[props.index].desc}</p>
                 <span>${menu[props.index].price}</span>
             </div>
-            <form className={classes['add-menu']} onSubmit={submitHandler} >
-                <label>
-                    Amount 
-                    <input 
-                        type='number'  
-                        ref={inputRef}
-                        defaultValue='1'
-                        min='1'
-                    />
-                </label>
-                <button type='submit'>+Add</button>
-            </form>
+            <Input 
+                onSubmit={submitHandler}
+                ref={inputRef}
+                label='amount'
+                input={{
+                    type: 'number',
+                    id: 'amount',
+                    min: '1',
+                    max: '5',
+                    step:'1',
+                    defaultValue: '1'
+                }}
+            />
         </li>
     )
 }
