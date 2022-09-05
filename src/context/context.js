@@ -4,31 +4,33 @@ import useHttp from "../hooks/use-http";
 const CartContext = React.createContext({
     menu: [],
     cart: [],
+    isLoading: false,
+    error: null,
     addMeal: (meal, amount) => {},
     increment: (id) => {},
     decrement: (id) => {}
 })
 
-const DUMMY_MENU = [
-    {
-      id: 'm2',
-      title: 'Schnitzel',
-      desc: 'A german specialty!',
-      price: 16.50
-    },
-    {
-      id: 'm3',
-      title: 'Barbeque Burger',
-      desc: 'American, raw and meaty',
-      price: 12.99
-    },
-    {
-      id: 'm4',
-      title: 'Green Bowl',
-      desc: 'Healthy...and green...',
-      price: 18.99
-    },
-]
+// const DUMMY_MENU = [
+//     {
+//       id: 'm2',
+//       title: 'Schnitzel',
+//       desc: 'A german specialty!',
+//       price: 16.50
+//     },
+//     {
+//       id: 'm3',
+//       title: 'Barbeque Burger',
+//       desc: 'American, raw and meaty',
+//       price: 12.99
+//     },
+//     {
+//       id: 'm4',
+//       title: 'Green Bowl',
+//       desc: 'Healthy...and green...',
+//       price: 18.99
+//     },
+// ]
   
 const DUMMY_CART = []
 
