@@ -11,7 +11,9 @@ const Menu = () => {
 
     return (
         <ul className={classes.menu}>
-            {menu.map((item, idx) =>
+            {ctx.isLoading && <p>Fetching meals...</p>}
+            {!ctx.isLoading && ctx.error && <p>{ctx.error}</p>}
+            {!ctx.isLoading && !ctx.error && menu.map((item, idx) =>
                 <MenuItem 
                     key={item.id}
                     id={item.id}
