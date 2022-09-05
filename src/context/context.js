@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import useHttp from "../hooks/use-http";
 
 const CartContext = React.createContext({
     menu: [],
@@ -9,12 +10,6 @@ const CartContext = React.createContext({
 })
 
 const DUMMY_MENU = [
-    {
-      id: 'm1',
-      title: 'Sushi',
-      desc: 'Finest fish and veggies',
-      price: 22.99
-    },
     {
       id: 'm2',
       title: 'Schnitzel',
@@ -39,8 +34,30 @@ const DUMMY_CART = []
 
 export const ContextProvider = (props) => {
 
-  const [menu, setMenu] = useState(DUMMY_MENU)
+  const [menu, setMenu] = useState([])
   const [cart, setCart] = useState(DUMMY_CART)
+
+  const {isLoading, error, sendRequest: fetchMeals} = useHttp()
+
+  useEffect(() => {
+    const transformedMeals = (mealsData) => {
+      const meals = []
+
+      for(const key in mealsData) {
+        meals.push({
+          id: key,
+          title: mealsData[key].title,
+          desc: mealsData[key].desc,
+          price: mealsData[key].price
+        })
+      }
+
+      setMenu(meals)
+    }
+
+    fetchMeals({url: 'https://react-http-45729-default-rtdb.firebaseio.com/meals.json'}, transformedMeals)
+  }, [fetchMeals])
+
 
   const AddtoCart = (meal, amount) => {
     setCart(prevCart => {
@@ -84,6 +101,8 @@ export const ContextProvider = (props) => {
         <CartContext.Provider value={{
             menu: menu,
             cart: cart,
+            isLoading: isLoading,
+            error: error,
             addMeal: AddtoCart,
             increment: incrementCartItem,
             decrement: decrementCartItem
