@@ -27,7 +27,7 @@ const CartModal = (props) => {
                 />
             )}
 
-            <ConfirmOrder closeCart={props.closeCart} />
+            <ConfirmOrder closeCart={props.closeCart} openOrder={props.openOrder} />
         </ul>
     )
 }
@@ -37,7 +37,7 @@ const CartList = (props) => {
     return (
         <React.Fragment>
             {ReactDOM.createPortal(<Backdrop closeCart={props.closeCart} />, document.getElementById('backdrop') )}
-            {ReactDOM.createPortal(<CartModal closeCart={props.closeCart} />, document.getElementById('modal'))}
+            {ReactDOM.createPortal(<CartModal closeCart={props.closeCart} openOrder={props.openOrder} />, document.getElementById('modal'))}
         </React.Fragment>
     )
 }

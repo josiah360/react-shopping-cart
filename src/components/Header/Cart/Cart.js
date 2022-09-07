@@ -3,49 +3,40 @@ import CartContext from "../../../context/context";
 
 import CartList from "./CartList";
 import classes from './Cart.module.css'
+import OrderForm from "../../OrderForm/OrderForm";
+import useModal from "../../../hooks/use-modal";
+import useHighlight from "../../../hooks/use-highlight";
 
 const Cart = () => {
-    const [btnIsHighlighted, setBtnIsHighlighted] = useState(false)
+    
     const ctx = useContext(CartContext)
-
     const { cart } = ctx
 
     const totalItems = cart.reduce((total, meal) => {
         return total + meal.amount
     }, 0)
 
+    const btnIsHighlighted = useHighlight((cart) => cart.length === 0, cart)
     const btnClass = `${classes.cart} ${btnIsHighlighted ? classes.bounce : ''}`;
 
-    useEffect(() => {
-        if(cart.length === 0) {
-            return;
-        }
-
-        setBtnIsHighlighted(true)
-
-        const timer = setTimeout(() => {
-            setBtnIsHighlighted(false)
-        }, 300)
-
-        return () => {
-            clearTimeout(timer)
-        }
-    }, [cart])
-
-
-    const [showCart, setShowCart] = useState(false)
-
-    const openCartHandler = () => {
-        setShowCart(true)
+    const orderReqest = (order) => {
+        
     }
 
-    const closeCartHandler = () => {
-        setShowCart(false)
-    }
+    const {
+        showModal: showCart,
+        openModalHandler: openCartHandler,
+        closeModalHandler: closeCartHandler} = useModal()
+
+    const {
+        showModal: showOrder,
+        openModalHandler: openOrderHandler,
+        closeModalHandler: closeOrderHandler} = useModal()
 
     return (
         <React.Fragment>
-            {showCart && <CartList closeCart={closeCartHandler} />}
+            {!showCart && showOrder && <OrderForm closeOrder={closeOrderHandler} />}
+            {showCart && <CartList closeCart={closeCartHandler} openOrder={openOrderHandler} />}
             <li className={btnClass} onClick={openCartHandler}>
                 Your Cart
                 <span className={classes['total-item']}>{totalItems}</span>

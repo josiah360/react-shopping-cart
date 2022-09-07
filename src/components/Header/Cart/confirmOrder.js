@@ -12,6 +12,11 @@ const ConfirmOrder = (props) => {
         return total + (item.mealPrice * item.amount)
     }, 0)
 
+    const orderHandler = () => {
+        props.openOrder()
+        props.closeCart()
+    }
+
     return (
         <div className={classes.confirm}>
             <div className={classes.total}>
@@ -20,7 +25,7 @@ const ConfirmOrder = (props) => {
             </div>
             <div className={classes.btns}>
                 <button type='button' onClick={props.closeCart}>Close</button>
-                <button type='button'>Order</button>
+                <button type='button' onClick={orderHandler} >Order</button>
             </div>
         </div>
     )
