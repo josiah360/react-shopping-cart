@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import OrderInput from "./OrderInput";
 import classes from './OrderForm.module.css';
 import useInput from "../../hooks/use-input";
+import useToday from "../../hooks/use-today";
 
 const Backdrop = (props) => {
     return (
@@ -12,6 +13,8 @@ const Backdrop = (props) => {
 }
 
 const Form = (props) => {
+
+    const today = useToday()
 
     const {
         value: enteredName,
@@ -38,9 +41,30 @@ const Form = (props) => {
             return
         }
 
-        console.log(enteredName)
+        const order = {
+            name: enteredName,
+            address: enteredAddress,
+            date: today
+        }
+
+        console.log(order)
+        props.onOrder(order)
+
         nameInputReset()
         addressInputReset()
+
+        props.closeOrder()
+    
+    }
+
+    let textContent = 'Confirm Order'
+
+    if(props.isLoading) {
+        textContent = 'Sending order...'
+    }
+
+    if(props.error) {
+        textContent = props.error
     }
 
     return (
@@ -71,7 +95,7 @@ const Form = (props) => {
     
             <div className={classes["form-actions"]}>
                 <button type='button' onClick={props.closeOrder} >Cancel</button>
-                <button type='submit'>Confirm Order</button>
+                <button type='submit' disabled={!formIsValid}>{ textContent }</button>
             </div>
             </form>
     )
@@ -80,7 +104,15 @@ const Form = (props) => {
 const OrderForm = (props) => {
     return (
         <Fragment>
-            {ReactDOM.createPortal(<Form closeOrder={props.closeOrder} />, document.getElementById('modal'))}
+            {ReactDOM.createPortal(
+                <Form 
+                    closeOrder={props.closeOrder} 
+                    onOrder={props.onOrder} 
+                    isLoading={props.isLoading}
+                    error={props.error}
+                />,
+
+                document.getElementById('modal'))}
             {ReactDOM.createPortal(<Backdrop />, document.getElementById('backdrop'))}
         </Fragment>
     )
